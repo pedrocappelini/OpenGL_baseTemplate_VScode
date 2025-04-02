@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Run OpenGL",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-Iinclude",
+                "-o", "main.exe",
+                "src/main.cpp",
+                "src/glad.c",
+                "-Llib", //look for libs in Lib
+                "-lglfw3dll" //which library it will be linking to
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile and run OpenGL program."
+        },
+        {
+            "label": "Run OpenGL",
+            "type": "shell",
+            "command": "./main.exe",
+            "dependsOn": "Build and Run OpenGL"
+        }
+    ]
+}
