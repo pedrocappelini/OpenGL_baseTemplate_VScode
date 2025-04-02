@@ -23,25 +23,21 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window;
-    window = glfwCreateWindow(800, 600, "ZMMR", NULL, NULL);
+    window = glfwCreateWindow(800, 600, "DISPLAY", NULL, NULL);
     if (window == NULL)
     {
         cout << "Failed to open GLFW window" << endl;
         return -1;
     }
     
-    // Get the monitor resolution
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     
-    // Get the window size
     int windowWidth = 800;
     int windowHeight = 600;
     
-    // Calculate the position to center the window
     int windowPosX = (mode->width - windowWidth) / 2;
     int windowPosY = (mode->height - windowHeight) / 2;
     
-    // Set the window position
     glfwSetWindowPos(window, windowPosX, windowPosY);
 
     glfwMakeContextCurrent(window);
@@ -55,12 +51,11 @@ int main()
     glViewport(0, 0, windowWidth, windowHeight);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // Set the background color to light blue
-    glClearColor(0.678f, 0.847f, 0.902f, 1.0f); // RGB for light blue
+    glClearColor(0.678f, 0.847f, 0.902f, 1.0f);
 
     while (!glfwWindowShouldClose(window))
     {
-        glClear(GL_COLOR_BUFFER_BIT); // Clear the screen with the background color
+        glClear(GL_COLOR_BUFFER_BIT);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
